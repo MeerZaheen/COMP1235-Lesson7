@@ -14,6 +14,12 @@
 (function () {
     "use strict";
 
+    var firstName;
+    var lastName;
+    var contactNumber
+    var email;
+
+
     /*
     * This function uses the document.title to switch JavaScript function when the page switches
     *
@@ -127,7 +133,14 @@
     * @returns {void}
     */
     function Contact() {
+
+        // creates a reference for your form
+        var contactForm = document.getElementById("contactForm")
+
+        contactForm.addEventListener("submit", onFormSubmit);
+
         var contactNumber = document.getElementById("contactNumber");
+
         contactNumber.addEventListener("blur", function(){
             console.log(contactNumber.value.length);
         });
@@ -143,6 +156,16 @@
     function Projects() {
         InitialText();
     }
+
+
+    // CALLBACK FUNCTIONS (EVENT HANDLER) ++++++++++++++++++++++++++++
+
+    // callback / event handler for the contactForm submit evemt
+    function onFormSubmit(event){
+        console.info("We entered onFormSubmit event");
+        event.preventDefault();
+    }
+
     // for console used for testing: console.log(document.URL);
     // document.body.onload = PageSwitcher;
     // document.body.addEventListener("load", Pageswitcher);
