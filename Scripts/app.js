@@ -16,8 +16,9 @@
 
     var firstName;
     var lastName;
-    var contactNumber
     var email;
+    var contactNumber;
+    var message;
 
 
     /*
@@ -74,7 +75,7 @@
         var secondParagraph = document.createElement("p");
         secondParagraph.textContent = "second paragraph";
 
-       parentElement.insertBefore(secondParagraph, firstParagraph);
+        parentElement.insertBefore(secondParagraph, firstParagraph);
 
 
     }
@@ -133,18 +134,15 @@
     * @returns {void}
     */
     function Contact() {
-
-        // creates a reference for your form
-        var contactForm = document.getElementById("contactForm")
+        // create a reference for your form
+        var contactForm = document.getElementById("contactForm");
+        firstName = document.getElementById("firstName");
+        lastName = document.getElementById("lastName");
+        email = document.getElementById("email");
+        contactNumber = document.getElementById("contactNumber");
+        message = document.getElementById("message");
 
         contactForm.addEventListener("submit", onFormSubmit);
-
-        var contactNumber = document.getElementById("contactNumber");
-
-        contactNumber.addEventListener("blur", function(){
-            console.log(contactNumber.value.length);
-        });
-
     }
 
     /**
@@ -160,10 +158,59 @@
 
     // CALLBACK FUNCTIONS (EVENT HANDLER) ++++++++++++++++++++++++++++
 
-    // callback / event handler for the contactForm submit evemt
-    function onFormSubmit(event){
-        console.info("We entered onFormSubmit event");
+    /**
+  * callback / event handler for the contactForm submit event
+  * 
+  * @method onFormSubmit
+  * @returns {void}
+  */
+    function onFormSubmit(event) {
+        console.info("entered onFormSubmit event");
+
+        // stops the form from clearing and trying to submit
         event.preventDefault();
+        // displays the forms values to the console
+        displayFormValues();
+        // reset the form
+        contactForm.reset();
+    }
+    /**
+     * displays form values on the page and console
+     * 
+     * @method displayFormValues
+     * @returns {void}
+     */
+    function displayFormValues() {
+        var column = document.getElementById("column");
+        var formValues = document.createElement("div");
+        formValues.setAttribute("id", "formValues");
+
+        var formValuesString = "";
+        formValuesString += "<p><hr><br>";
+        formValuesString += "First Name: " + firstName.value + "<br>";
+        formValuesString += "Last Name: " + lastName.value + "<br>";
+        formValuesString += "Email: " + email.value + "<br>";
+        formValuesString += "Contact Number: " + contactNumber.value + "<br>";
+        formValuesString += "Message: " + message.value + "<br>";
+        formValuesString += "<hr><br></p>";
+
+        formValues.innerHTML = formValuesString;
+
+        if (document.getElementById("formValues")) {
+            var formValuesDiv = document.getElementById("formValues");
+            formValuesDiv.innerHTML = formValuesString;
+        }
+        else {
+            column.appendChild(formValues);
+        }
+
+        console.log("++++++++++++++++++++++++++++++++++++++++++");
+        console.log("First Name: " + firstName.value);
+        console.log("Last Name: " + lastName.value);
+        console.log("Email: " + email.value);
+        console.log("Contact Number: " + contactNumber.value);
+        console.log("Message: " + message.value);
+        console.log("++++++++++++++++++++++++++++++++++++++++++");
     }
 
     // for console used for testing: console.log(document.URL);
