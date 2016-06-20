@@ -1,0 +1,28 @@
+/* custom css goes here */
+/*
+* FileName: app.js
+*
+* @author Meer
+* @date june 7, 2016
+*
+* StudentID: 300522487
+* website: http://comp125-lab3.azurewebsites.net/
+* @description: This file is the main javascript file for the website
+*/
+// IIFE - Immediately Invoked Function Expression
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.firstSentence {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+div.row p {
+    color: blue;
+}
